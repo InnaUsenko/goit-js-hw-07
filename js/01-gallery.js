@@ -27,11 +27,14 @@ list.append(...listItems);
 
 list.addEventListener("click", (event) => {
   event.preventDefault();
+
   const instance = basicLightbox.create(`
       <img src="${event.target.dataset.source}" width="800" height="600">
   `);
 
-  instance.show();
+  if (event.target.classList.contains("gallery__image")) {
+    instance.show();
+  }
 
   document.addEventListener("keydown", (event) => {
     if (event.code === "Escape") {
